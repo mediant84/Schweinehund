@@ -46,25 +46,23 @@
 
     <ImageButton
         android:id="@+id/store_button"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@null"
+        android:src="@drawable/burger"
         app:layout_constraintBottom_toTopOf="@+id/store_string"
         app:layout_constraintEnd_toEndOf="@+id/store_string"
-        app:layout_constraintStart_toStartOf="@+id/store_string"
-        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
-        tools:srcCompat="@android:drawable/ic_dialog_dialer" />
+        app:layout_constraintStart_toStartOf="@+id/store_string" />
 
     <ImageButton
         android:id="@+id/storage_button"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@null"
+        android:src="@drawable/brot"
         app:layout_constraintBottom_toTopOf="@+id/storage_string"
         app:layout_constraintEnd_toEndOf="@+id/storage_string"
-        app:layout_constraintStart_toStartOf="@+id/storage_string"
-        app:srcCompat="@android:drawable/ic_menu_edit"
-        tools:srcCompat="@android:drawable/ic_popup_reminder" />
+        app:layout_constraintStart_toStartOf="@+id/storage_string" />
 
     <TextView
         android:id="@+id/points_input_string"
@@ -87,7 +85,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="Store"
+        android:text="10 Exp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/points_input_string" />
@@ -99,7 +97,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="Vorrat"
+        android:text="5 Exp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/points_input_string"
         app:layout_constraintStart_toStartOf="parent" />
@@ -147,7 +145,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:text="Progress"
         app:layout_constraintBottom_toBottomOf="@+id/progressBar3"
         app:layout_constraintEnd_toEndOf="@+id/progressBar3"
         app:layout_constraintStart_toStartOf="@+id/progressBar3"

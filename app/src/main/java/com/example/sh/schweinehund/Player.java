@@ -81,24 +81,6 @@ public class Player {
         return getLevel();
     }
 
-    /*public int progressByPercentage(){
-        double totalExperience = getLevel();
-        setLevel();
-        double myLevel = (1500 * level);
-        double calc = (totalExperience / myLevel) * 100;
-        double percentage = calc;
-        int myInt = (int) (percentage * 1);
-        return myInt;
-    }
-
-    public boolean save(DBHelper dbHelper) {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(PROFILE_COLUMN_NAME, name);
-        contentValues.put(PROFILE_COLUMN_LEVEL, level);
-        db.insert(PROFILE_TABLE_NAME, null, contentValues);
-        return true;
-    }*/
 
     public static ArrayList<Player> all(DBHelper dbHelper){
         ArrayList<Player> players = new ArrayList<>();
