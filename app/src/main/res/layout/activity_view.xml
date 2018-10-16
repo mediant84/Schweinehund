@@ -3,10 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    tools:layout_editor_absoluteY="25dp">
+    tools:context=".QuestActivity"
+    android:layout_height="match_parent">
 
+    <ListView
+        android:id="@+id/questList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/toolbar_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_background" />
 
     <ImageView
         android:id="@+id/toolbar_background"
@@ -22,9 +31,9 @@
         android:id="@+id/add_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@null"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar_background"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,9 +44,9 @@
         android:id="@+id/app_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@null"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar_background"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,52 +56,15 @@
     <TextView
         android:id="@+id/textView_main"
         android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_marginEnd="8dp"
+        android:layout_height="20dp"
         android:layout_marginStart="8dp"
-        android:text="@string/deine_kategorien"
+        android:layout_marginEnd="8dp"
+        android:text="@string/sport"
         android:textColor="@color/light_greyColor"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar_background"
         app:layout_constraintEnd_toStartOf="@+id/add_button"
         app:layout_constraintStart_toEndOf="@+id/app_button"
         app:layout_constraintTop_toTopOf="@+id/toolbar_background"
         app:layout_constraintVertical_bias="0.516" />
-
-    <Button
-        android:id="@+id/sport_button"
-        android:layout_width="0dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/grey_blueColor"
-        android:text="@string/sport"
-        android:textColor="@color/light_greyColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_background" />
-
-    <Button
-        android:id="@+id/ernaehrung_button"
-        android:layout_width="0dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/grey_blueColor"
-        android:text="@string/ernaehrung"
-        android:textColor="@color/light_greyColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sport_button" />
-
-    <Button
-        android:id="@+id/bildung_button"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/grey_blueColor"
-        android:text="@string/bildung"
-        android:textColor="@color/light_greyColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.395"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ernaehrung_button" />
 
 </android.support.constraint.ConstraintLayout>

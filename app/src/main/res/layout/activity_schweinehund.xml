@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameView">
+
+    <ImageView
+        android:id="@+id/toolbar_background"
+        android:layout_width="0dp"
+        android:layout_height="51dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/colorAccent"
+        tools:srcCompat="@color/mainColor" />
+
+    <ImageButton
+        android:id="@+id/add_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_add" />
+
+    <TextView
+        android:id="@+id/textView_main"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Dein Schweinehund"
+        android:textColor="@color/light_greyColor"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_background"
+        app:layout_constraintEnd_toStartOf="@+id/toolbar_background"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/toolbar_background"
+        app:layout_constraintTop_toTopOf="@+id/toolbar_background"
+        app:layout_constraintVertical_bias="0.516" />
+
+    <ImageButton
+        android:id="@+id/store_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        app:layout_constraintBottom_toTopOf="@+id/store_string"
+        app:layout_constraintEnd_toEndOf="@+id/store_string"
+        app:layout_constraintStart_toStartOf="@+id/store_string"
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+        tools:srcCompat="@android:drawable/ic_dialog_dialer" />
+
+    <ImageButton
+        android:id="@+id/storage_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        app:layout_constraintBottom_toTopOf="@+id/storage_string"
+        app:layout_constraintEnd_toEndOf="@+id/storage_string"
+        app:layout_constraintStart_toStartOf="@+id/storage_string"
+        app:srcCompat="@android:drawable/ic_menu_edit"
+        tools:srcCompat="@android:drawable/ic_popup_reminder" />
+
+    <TextView
+        android:id="@+id/points_input_string"
+        android:layout_width="45dp"
+        android:layout_height="27dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="..."
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/store_string"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/storage_string" />
+
+    <TextView
+        android:id="@+id/store_string"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Store"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/points_input_string" />
+
+    <TextView
+        android:id="@+id/storage_string"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Vorrat"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/points_input_string"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/point_string"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Punkte"
+        app:layout_constraintBottom_toTopOf="@+id/points_input_string"
+        app:layout_constraintEnd_toEndOf="@+id/points_input_string"
+        app:layout_constraintStart_toStartOf="@+id/points_input_string" />
+
+    <ImageView
+        android:id="@+id/Schweinehund_picture"
+        android:layout_width="0dp"
+        android:layout_height="282dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/store_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_background"
+        tools:srcCompat="@tools:sample/backgrounds/scenic[10]" />
+
+    <ProgressBar
+        android:id="@+id/progressBar3"
+        style="@style/tallerBarStyle"
+        android:layout_width="250dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:max="200"
+        android:progress="20"
+        app:layout_constraintTop_toBottomOf="@+id/Schweinehund_picture" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/progressBar3"
+        app:layout_constraintEnd_toEndOf="@+id/progressBar3"
+        app:layout_constraintStart_toStartOf="@+id/progressBar3"
+        app:layout_constraintTop_toTopOf="@+id/progressBar3" />
+
+</android.support.constraint.ConstraintLayout>

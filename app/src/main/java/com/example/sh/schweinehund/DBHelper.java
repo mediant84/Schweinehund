@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 
 /**
@@ -17,14 +18,12 @@ import java.util.ArrayList;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "test95.db";
+    public static final String DATABASE_NAME = "test96.db";
 
     //    Category table
     public static final String CATEGORY_TABLE_NAME = "categories";
     public static final String CATEGORY_COLUMN_ID = "id";
     public static final String CATEGORY_COLUMN_NAME = "name";
-    public static final String CATEGORY_COLUMN_EXP = "exp";
-    public static final String CATEGORY_COLUMN_LEVEL = "level";
 
     //    Quest table
     public static final String QUEST_TABLE_NAME = "quests";
@@ -39,43 +38,34 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String PROFILE_TABLE_NAME = "users";
     public static final String PROFILE_COLUMN_ID = "id";
     public static final String PROFILE_COLUMN_NAME = "name";
-    public static final String PROFILE_COLUMN_STRENGTH_EXP = "strength_exp";
-    public static final String PROFILE_COLUMN_STAMINA_EXP = "stamina_exp";
-    public static final String PROFILE_COLUMN_INTELLIGENCE_EXP = "intelligence_exp";
-    public static final String PROFILE_COLUMN_SOCIAL_EXP = "social_exp";
     public static final String PROFILE_COLUMN_LEVEL = "level";
+    public static final String PROFILE_COLUMN_PROGRESS = "progress";
+    public static final String PROFILE_COLUMN_DATE = "date";
 
 
     public DBHelper(Context context){
         super(context, DATABASE_NAME, null, 1);
     }
 
+
+    // Tabelle erstellen
     public void onCreate(SQLiteDatabase db){
         setForeignKeyConstraintsEnabled(db);
+        Date date = new Date();
+        db.execSQL("CREATE TABLE " + PROFILE_TABLE_NAME + "(id INTEGER primary key autoincrement NOT NULL, name TEXT, level INTEGER, progress INTEGER, date INTEGER )");
 
-        db.execSQL("CREATE TABLE " + PROFILE_TABLE_NAME + "(id INTEGER primary key autoincrement NOT NULL, name TEXT, strength_exp INTEGER, stamina_exp INTEGER, intelligence_exp INTEGER, social_exp INTEGER, level INTEGER )");
-
-        db.execSQL("CREATE TABLE " + CATEGORY_TABLE_NAME + "(id INTEGER primary key autoincrement NOT NULL, name TEXT, exp INTEGER, level INTEGER )");
+        db.execSQL("CREATE TABLE " + CATEGORY_TABLE_NAME + "(id INTEGER primary key autoincrement NOT NULL, name TEXT)");
         db.execSQL("CREATE TABLE " + QUEST_TABLE_NAME + "(id INTEGER primary key autoincrement NOT NULL, name TEXT, expValue INTEGER, date INTEGER, completed INTEGER DEFAULT 0, category INTEGER NOT NULL, FOREIGN KEY (category) REFERENCES '+CATEGORY_TABLE_NAME+' (id))");
 
-        db.execSQL("INSERT INTO " + CATEGORY_TABLE_NAME + "('name', 'exp', 'level') VALUES ('Strength', 0, 0 );");
-        db.execSQL("INSERT INTO " + CATEGORY_TABLE_NAME + "('name', 'exp', 'level') VALUES ('Stamina', 0, 0 );");
-        db.execSQL("INSERT INTO " + CATEGORY_TABLE_NAME + "('name', 'exp', 'level') VALUES ('Intelligence', 0, 0 );");
-        db.execSQL("INSERT INTO " + CATEGORY_TABLE_NAME + "('name', 'exp', 'level') VALUES ('Social', 0, 0 );");
+        db.execSQL("INSERT INTO " + CATEGORY_TABLE_NAME + "('name') VALUES ('Sport' );");
+        db.execSQL("INSERT INTO " + CATEGORY_TABLE_NAME + "('name') VALUES ('Eating' );");
+        db.execSQL("INSERT INTO " + CATEGORY_TABLE_NAME + "('name') VALUES ('Intelligence' );");
 
-        db.execSQL("INSERT INTO " + PROFILE_TABLE_NAME + "('name', 'strength_exp', 'stamina_exp', 'intelligence_exp', 'social_exp', 'level') VALUES ('Schweinehund', 0, 0, 0, 0, 0 );");
+        db.execSQL("INSERT INTO " + PROFILE_TABLE_NAME + "('name','level', 'progress') VALUES ('Schweinehund', 0, 50 );");
 
 
-        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('Start', '10', '1510737479', '0', '1');");
-        //db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('Drinks with friends', '100', '1510743305', '0', '4');");
-        //db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('CodeClan course', '800', '1510743305', '0', '3');");
-        //db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('Cycling to Balloch and back', '225', '1510743305', '0', '2');");
-        //db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('Python Dojo', '75', '1510743305', '0', '3');");
-        //db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('Lindsey (Birthday)', '125', '1510743305', '0', '4');");
-        //db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('Yoga', '40', '1510743305', '0', '2');");
-        //db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('Bear, Fish, River in Python', '300', '1510743305', '0', '3');");
-        //db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('Build / Put up new shelves', '175', '1510743305', '0', '1');");
-
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('Start', '10', '1510737479', '0', '3');");
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('Test', '5', '1510737479', '0', '2');");
 
     }
 

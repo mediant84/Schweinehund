@@ -1,140 +1,70 @@
 package com.example.sh.schweinehund;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Spinner;
 
-import java.util.Calendar;
 import java.util.Date;
 
+public class AddQuestActivity extends AppCompatActivity implements View.OnClickListener{
 
-
-public class AddQuestActivity extends AppCompatActivity implements View.OnClickListener {
-
-    MyEditText editName;
-    MyEditText editExpValue;
-    MyTextView featText;
-
-    RadioGroup radioGroupBtn;
-    RadioButton strengthBtn;
-    RadioButton staminaBtn;
-    RadioButton intelligenceBtn;
-    RadioButton socialBtn;
-
-    DatePicker datepicker;
-    Button addBtn;
+    EditText quest_name;    // Name bestimmen
+    EditText quest_exp;     // EXP bestimmen
+    Spinner quest_cat;      // Kategorie bestimmen
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_quest);
+        setContentView(R.layout.activity_new_task);
 
-        editName = findViewById(R.id.questNameInput);
-        editName.setBackgroundResource(R.color.progressBarTransparent50);
+        ImageButton app_button = findViewById(R.id.app_button);
+        quest_name = findViewById(R.id.name_input);
+        quest_exp = findViewById(R.id.point_input);
+        quest_cat = findViewById(R.id.category_spinner);
 
-        editExpValue = findViewById(R.id.expValueInput);
+        app_button.setOnClickListener(this);
 
-        // Radio buttons
-        radioGroupBtn = findViewById(R.id.radioGrp);
-        strengthBtn = findViewById(R.id.strengthBtn);
-        strengthBtn.setOnClickListener(this);
-
-        staminaBtn = findViewById(R.id.staminaBtn);
-        staminaBtn.setOnClickListener(this);
-
-        intelligenceBtn = findViewById(R.id.intelligenceBtn);
-        intelligenceBtn.setOnClickListener(this);
-
-        socialBtn = findViewById(R.id.socialBtn);
-        socialBtn.setOnClickListener(this);
-
-        addBtn = findViewById(R.id.addQuestBtn);
-        datepicker = findViewById(R.id.selectDate);
-
-        featText = findViewById(R.id.featText);
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "Metalista.otf");
-        featText.setTypeface(typeface);
-        featText.setTextColor(getResources().getColor(R.color.progressBar, getResources().newTheme()));
     }
-
-    public boolean showFeat(){
-        if (strengthBtn.isChecked() || staminaBtn.isChecked() || intelligenceBtn.isChecked() || socialBtn.isChecked()) {
-            featText.setText(showCategoryNameByNumber(checkedRadioButton(radioGroupBtn)));
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            // Geht auf Aktivity mit Schweinehund
+            case R.id.app_button:
+                Intent app_quest = new Intent(this, GameView.class);
+                startActivity(app_quest);
+                break;
         }
-        return true;
-    }
-
-
-
-    public void addQuest(View button){
-        DBHelper dbHelper = new DBHelper(this);
-        String name = editName.getText().toString();
-        Integer expValue = Integer.parseInt(editExpValue.getText().toString());
-
-        Integer categoryId = checkedRadioButton(radioGroupBtn);
-
-        Date dueDate = getDateFromDatePicker(datepicker);
-
-        Quest quest = new Quest(name, expValue, categoryId, dueDate);
-        quest.save(dbHelper);
-
-        Intent intent = new Intent(this, QuestActivity.class);
-        startActivity(intent);
-    }
-
-    public void cancelAddQuest(View button){
-        Intent intent = new Intent(this, QuestActivity.class);
-        startActivity(intent);
-    }
-
-    public static java.util.Date getDateFromDatePicker(DatePicker datePicker) {
-        int day = datePicker.getDayOfMonth();
-        int month = datePicker.getMonth();
-        int year = datePicker.getYear();
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(year, month, day);
-        return calendar.getTime();
-    }
-
-    public Integer checkedRadioButton(RadioGroup radioGroup){
-
-        switch (radioGroup.getCheckedRadioButtonId()) {
-            case R.id.strengthBtn:
-                return 1;
-            case R.id.staminaBtn:
-                return 2;
-            case R.id.intelligenceBtn:
-                return 3;
-            case R.id.socialBtn:
-                return 4;
-        }
-        return null;
-    }
-
-    public String showCategoryNameByNumber(Integer categoryInt){
-
-        switch (categoryInt) {
-            case 1:
-                return "Strength";
-            case 2:
-                return "Stamina";
-            case 3:
-                return "Intelligence";
-            case 4:
-                return "Social";
-
-        }
-        return null;
     }
 
     @Override
-    public void onClick(View v) {
-        showFeat();
+    public void onBackPressed() {
+        // super.onBackPressed();
+        Intent app_quest = new Intent(this, MainActivity.class);
+        startActivity(app_quest);
+    }
+
+    // Questannahme
+    public void addQuest(View button){
+        DBHelper dbHelper = new DBHelper(this);
+        String name = quest_name.getText().toString();
+
+        Integer expValue= Integer.parseInt(quest_exp.getText().toString());
+        // EXP begränzung
+        if(expValue>10)
+            expValue=10;
+        if(expValue<0)
+            expValue=0;
+
+        Integer categoryId = quest_cat.getSelectedItemPosition() +1;
+
+        Quest quest = new Quest(name, expValue, categoryId);
+        quest.save(dbHelper);
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

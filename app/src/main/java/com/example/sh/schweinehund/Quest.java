@@ -31,6 +31,14 @@ public class Quest {
     private Date date;
     private int id;
 
+    public Quest(String name, Integer expValue, Integer category) {
+        this.name = name;
+        this.expValue = expValue;
+        this.category = category;
+        this.isCompleted = 0;
+        this.date = new Date();
+    }
+
     public Quest(String name, Integer expValue, Integer category, Date date) {
         this.name = name;
         this.expValue = expValue;
@@ -48,7 +56,7 @@ public class Quest {
         this.date = date;
     }
 
-    //    Getters
+    // Getters
 
     public String getName() {
         return name;
@@ -70,7 +78,7 @@ public class Quest {
         return date;
     }
 
-    //    Setters
+    // Setters
 
     public void setName(String name) {
         this.name = name;
@@ -96,13 +104,11 @@ public class Quest {
 
         switch (questInt) {
             case 1:
-                return Category.load(dbHelper, "Strength");
+                return Category.load(dbHelper, "Sport");
             case 2:
-                return Category.load(dbHelper, "Social");
+                return Category.load(dbHelper, "Naehrung");
             case 3:
-                return Category.load(dbHelper, "Social");
-            case 4:
-                return Category.load(dbHelper, "Social");
+                return Category.load(dbHelper, "Bildung");
         }
         return null;
     }
@@ -111,28 +117,25 @@ public class Quest {
 
         switch (questInt) {
             case 1:
-                return "Strength";
+                return "Sport";
             case 2:
-                return "Stamina";
+                return "Naehrung";
             case 3:
-                return "Intelligence";
-            case 4:
-                return "Social";
-
+                return "Bildung";
         }
         return null;
     }
 
-    public static java.util.Date getDateFromDatePicker(DatePicker datePicker) {
+    /*public static java.util.Date getDateFromDatePicker(DatePicker datePicker) {
         int day = datePicker.getDayOfMonth();
         int month = datePicker.getMonth();
         int year = datePicker.getYear();
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, day);
         return calendar.getTime();
-    }
+    }*/
 
-
+    // Neuen Quest abspeichern
     public boolean save(DBHelper dbHelper) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -142,6 +145,7 @@ public class Quest {
         contentValues.put(QUEST_COLUMN_DATE, date.getTime());
 
         db.insert(QUEST_TABLE_NAME, null, contentValues);
+        db.close();
         return true;
     }
 
@@ -184,11 +188,11 @@ public class Quest {
         return quests;
     }
 
-    public static ArrayList<Quest> allIncomplete(DBHelper dbHelper){
+    public static ArrayList<Quest> allIncomplete(DBHelper dbHelper,String cat){
         ArrayList<Quest> quests = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        String query = " WHERE completed = ?";
-        Cursor cursor = db.rawQuery("SELECT * FROM " + QUEST_TABLE_NAME + query , new String[] {"0"});
+        String query = " WHERE completed = ? and category = ?";
+        Cursor cursor = db.rawQuery("SELECT * FROM " + QUEST_TABLE_NAME + query , new String[] {"0",  cat});
         while (cursor.moveToNext()) {
             Integer id = cursor.getInt(cursor.getColumnIndex(QUEST_COLUMN_ID));
             String name = cursor.getString(cursor.getColumnIndex(QUEST_COLUMN_NAME));

@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Schweinehund</string>
+    <string name="deine_kategorien">Deine Kategorien</string>
+    <string name="sport">Sport</string>
+    <string name="ernaehrung">Ernährung</string>
+    <string name="bildung">Bildung</string>
+    <string name="fahrrad_fahren">Fahrrad fahren</string>
+    <string name="laufen">laufen</string>
+    <string name="schwimmen">Schwimmen</string>
+    <string name="loeschen">Löschen</string>
+    <string name="details">Details</string>
+    <string name="bearbeiten">Bearbeiten</string>
+    <string name="neue_aufgabe_erstellen">neue Aufgabe erstellen</string>
+
+
+    <string-array name="kategorie_arrays">
+        <item>Sport</item>
+        <item>Ernäherung</item>
+        <item>Bildung</item>
+    </string-array>
+
 </resources>
