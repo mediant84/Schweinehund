@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.ernaehrung_button:
                 Intent quest_view1 = new Intent(this, QuestActivity.class);
-                quest_view1.putExtra("headname", "NÄHRUNG"); // Übergabe an andere Activity
+                quest_view1.putExtra("headname", "ERNÄHRUNG"); // Übergabe an andere Activity
                 startActivity(quest_view1);
                 break;
             case R.id.bildung_button:

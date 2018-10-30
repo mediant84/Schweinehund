@@ -70,7 +70,7 @@ public class GameView extends AppCompatActivity implements View.OnClickListener{
                 }
                 else{
                     Context context = this;
-                    CharSequence text = "Wenig Punkte!";
+                    CharSequence text = "Zu wenig Punkte!";
                     int duration = Toast.LENGTH_SHORT;
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
@@ -86,7 +86,7 @@ public class GameView extends AppCompatActivity implements View.OnClickListener{
                 }
                 else {
                     Context context = this;
-                    CharSequence text = "Wenig Punkte!";
+                    CharSequence text = "Zu wenig Punkte!";
                     int duration = Toast.LENGTH_SHORT;
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();

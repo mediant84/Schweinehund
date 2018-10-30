@@ -10,7 +10,7 @@
     <string name="loeschen">Löschen</string>
     <string name="details">Details</string>
     <string name="bearbeiten">Bearbeiten</string>
-    <string name="neue_aufgabe_erstellen">neue Aufgabe erstellen</string>
+    <string name="neue_aufgabe_erstellen">Neue Aufgabe erstellen</string>
 
 
     <string-array name="kategorie_arrays">

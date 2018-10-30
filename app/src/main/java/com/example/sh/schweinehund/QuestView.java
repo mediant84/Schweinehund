@@ -41,7 +41,7 @@ public class QuestView extends ArrayAdapter<Quest> {
         Typeface font = Typeface.createFromAsset(getContext().getAssets(), "americanTypwriterRegular.ttf");
         expValue.setTypeface(font);
 
-        expValue.setText(currentQuest.getExpValue().toString() + " exp");
+        expValue.setText(currentQuest.getExpValue().toString() + " Pkt");
 
         final DBHelper dbHelper = new DBHelper(this.getContext());
 
@@ -95,7 +95,7 @@ public class QuestView extends ArrayAdapter<Quest> {
 
         // Info über Beendigung zeigen
         Context context = this.getContext();
-        CharSequence text = "Quest Beendet!";
+        CharSequence text = "Aufgabe beendet!";
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();

@@ -55,7 +55,7 @@ public class QuestActivity extends AppCompatActivity implements View.OnClickList
             case "SPORT":
                 cat = "1";
                 break;
-            case "NÄHRUNG":
+            case "ERNÄHRUNG":
                 cat = "2";
                 break;
             case "BILDUNG":

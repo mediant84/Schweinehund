@@ -33,13 +33,10 @@
         android:id="@+id/dueDate"
         android:layout_width="83dp"
         android:layout_height="25dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="68dp"
         android:text="Datum:"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.07"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categoryView" />
 
@@ -49,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
-        android:text="category"
+        android:text="Kategorie"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/expView" />
@@ -63,7 +60,7 @@
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameViews"
-        tools:text="exp" />
+        tools:text="Pkt" />
 
     <Button
         android:id="@+id/button2"
@@ -73,7 +70,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="20dp"
         android:onClick="backToHome"
-        android:text="Cancel"
+        android:text="Zurück"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -2,11 +2,13 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303f9f</color>
-    <color name="colorAccent">#131f8a</color>
-    <color name="mainColor">#174c83</color>
-    <color name="grey_blueColor">#62788e</color>
+    <color name="colorAccent">#004c00</color>
+    <color name="mainColor">#004c00</color>
+    <color name="grey_blueColor">#44bc44</color>
     <color name="light_greyColor">#d8e4f2</color>
-    <color name="progressBarBackground">#18b4b7</color>
-    <color name="progressBarTransparent50">#0e67f7</color>
-    <color name="progressBar">#631a88</color>
+    <color name="progressBarBackground">#b1dbb1</color>
+    <color name="progressBarTransparent50">#44bc44</color>
+    <color name="progressBar">#44bc44</color>
+
+    <color name="dark_green">#18b4b7</color>
 </resources>
